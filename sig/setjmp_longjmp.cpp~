@@ -1,0 +1,29 @@
+
+#include <cstdio>
+#include <setjmp.h>
+
+static jmp_buf env;
+
+double divide(double to, double by)
+{
+    if(by == 0)
+        longjmp(env, 1);
+    return to / by;
+}
+
+void f() 
+{
+    if (setjmp(env) == 0)
+        divide(2, 0);
+    else
+        printf("Cannot / 0");
+    printf("done");
+}
+
+
+
+int main()
+{
+
+
+}

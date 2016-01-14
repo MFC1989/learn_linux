@@ -1,0 +1,29 @@
+#include <iostream>
+#include <signal.h>
+#include <unistd.h>
+using namespace std;
+
+void f_usr1(int pid)
+{
+	cout<<"SIGUSR1 was captured"<<endl;
+}
+
+void f_usr2(int pid)
+{
+	cout<<"SIGUSR2 was captured"<<endl;
+}
+
+
+int main()
+{
+	
+	signal(SIGUSR1,f_usr1);
+	signal(SIGUSR2,f_usr2);
+	raise(SIGUSR1);							
+	raise(SIGUSR2);
+	
+	while(1){}
+	
+	return 0;
+
+}
