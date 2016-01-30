@@ -5,6 +5,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+
 #define ERR_EXIT(m) \
 	do {\
 		perror(m);\
